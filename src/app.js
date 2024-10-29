@@ -4,6 +4,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const config = require('./config/database');
 const pdfRoutes = require('./routes/pdfRoutes');
+const cors = require('cors');
+
+
 
 // Rimuove il warning di Mongoose
 mongoose.set('strictQuery', false);
@@ -13,6 +16,7 @@ const app = express();
 
 // Middleware per gestire i dati JSON
 app.use(express.json());
+app.use(cors());
 
 // Connessione al database
 mongoose.connect(config.url, config.options)

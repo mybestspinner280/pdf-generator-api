@@ -76,6 +76,29 @@ class PdfController {
             });
         }
     }
+
+    async listTemplates(req, res) {
+        try {
+            const templates = await Template.find({}, 'name createdAt');
+            res.json(templates);
+        } catch (error) {
+            console.error('Errore nel recupero dei template:', error);
+            res.status(500).json({ error: 'Errore nel recupero dei template' });
+        }
+    }
+
+    async getTemplate(req, res) {
+        try {
+            const template = await Template.findOne({ name: req.params.name });
+            if (!template) {
+                return res.status(404).json({ error: 'Template non trovato' });
+            }
+            res.json(template);
+        } catch (error) {
+            console.error('Errore nel recupero del template:', error);
+            res.status(500).json({ error: 'Errore nel recupero del template' });
+        }
+    }
 }
 
 module.exports = new PdfController();

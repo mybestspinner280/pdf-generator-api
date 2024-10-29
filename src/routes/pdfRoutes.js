@@ -15,4 +15,10 @@ router.get('/health', (req, res) => {
     res.json({ status: 'ok', message: 'Il servizio PDF è attivo' });
 });
 
+// Nuova route per listare i template
+router.get('/templates', pdfController.listTemplates.bind(pdfController));
+
+// Route per vedere un singolo template
+router.get('/template/:name', pdfController.getTemplate.bind(pdfController));
+
 module.exports = router;
