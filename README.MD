@@ -61,3 +61,14 @@ curl -X POST http://localhost:3000/api/pdf/generate \
     }
   }' \
   --output convocazione.pdf
+
+
+# puoi vedere i template in questi modi:
+
+Usando curl per vedere la lista di tutti i template:
+
+curl http://localhost:3000/api/pdf/templates
+
+Per vedere un template specifico:
+
+curl http://localhost:3000/api/pdf/template/convocazione_assemblea
